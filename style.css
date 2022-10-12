@@ -1,0 +1,58 @@
+body {
+    font-family: Arial;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+
+.columns {
+    display: flex;
+}
+
+#column1 {
+    width: 60%;
+}
+
+#column2 {
+    width: 40%;
+}
+
+.acknowledgements {
+    padding-top: 300px;
+}
+
+.point {
+    fill: blue;
+}
+
+.point:hover {
+    fill: rgba(194, 194, 18, 0.491); 
+}
+
+.border {
+    stroke-width: 1px;
+    stroke: orange;
+}
+
+.submission {
+    display: block;
+}
+
+input {
+    width: 30px;
+    height: 30px;
+}
+
+.pointInfo {
+    padding-bottom: 30px;
+}
+
+li {
+    padding-bottom: 10px;
+}
