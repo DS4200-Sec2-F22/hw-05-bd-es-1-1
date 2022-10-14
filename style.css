@@ -24,7 +24,7 @@ h2 {
 }
 
 .acknowledgements {
-    padding-top: 300px;
+    padding-top: 150px;
 }
 
 .point {
@@ -60,3 +60,22 @@ input {
 li {
     padding-bottom: 10px;
 }
+
+.bar {
+    fill: blue; 
+}
+
+.bar:hover {
+  fill: yellow;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: whitesmoke;
+  border: solid;
+  border-width: 2px;
+  border-radius: 5px;  
+  padding: 5px;
+}
+  
+  
