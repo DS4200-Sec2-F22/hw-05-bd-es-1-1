@@ -40,6 +40,10 @@ h2 {
     stroke: orange;
 }
 
+.bar {
+    fill: green;
+}
+
 .submission {
     display: block;
 }
