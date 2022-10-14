@@ -15,12 +15,33 @@
 
     <div class='columns'>
 
-        <div id='column1'>
-
-        </div>
+        <div id='column1'></div>
 
         <div id='column2'>
+            <div class="pointInfo">
+                <h3 id="clickedPointInfo">Last point clicked: </h3>
+            </div>
 
+            <!-- Div holding the form to add a new point -->
+            <div class="submission">
+                <div>
+                    <h3>Add Point</h3>
+
+                    <!-- For both x and y axes, user can choose any number between 1 and 9.
+                        These represent coordinates. -->
+                    <form>
+                        <label for="xInput">X Coordinate:</label>
+                        <input type="number" id="xInput" min="1" max="9" value="1">
+                        <label for="yInput">Y Coordinate:</label>
+                        <input type="number" id="yInput" min="1" max="9" value="1">
+                    </form>
+                </div>
+
+                <!-- Submit button -->
+                <button id="button">
+                    Submit
+                </button>
+            </div>
         </div>
 
 
