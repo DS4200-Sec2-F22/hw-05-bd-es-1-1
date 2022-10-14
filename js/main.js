@@ -25,18 +25,25 @@ d3.csv("data/scatter-data.csv").then((data) => {
     .enter()
     .append("circle")
     .attr("cx", (d) => { return d.x * SCALE + PADDING; })
-    .attr("cy", (d) => { return FRAME_HEIGHT - d.y * SCALE })
+    .attr("cy", (d) => { return (FRAME_HEIGHT - (d.y) * SCALE) - 50 })
     .attr("r", 10)
     .attr("class", "point")
     .on("click", function(data) {
-      const circle = d3.select(this)
-      const display = document.getElementById('clickedPointInfo')
+      const target = d3.select(this)
       const xPos = (parseInt(this.getAttribute('cx')) - PADDING) / SCALE; 
-      const yPos = (FRAME_HEIGHT - parseInt(this.getAttribute('cy'))) / SCALE ;
+      const yPos = ((FRAME_HEIGHT - parseInt(this.getAttribute('cy'))) / SCALE) - 1;
       
       let clickedPointInfo = "Last point clicked: (" + xPos + ", " + yPos + ")";
 
       document.getElementById("clickedPointInfo").innerHTML = clickedPointInfo;
+
+      const stroke = target.attr("stroke");
+      if (stroke === null || stroke === "none") {
+        target.attr("stroke", "orange");
+        target.attr("stroke-width", "5px");
+      } else {
+        target.attr("stroke", "none")
+      }
 
     })
 
@@ -72,19 +79,6 @@ d3.csv("data/scatter-data.csv").then((data) => {
     .attr("font-size", "10px");
 })
 
-// when clicked, add the border to a point and set the corresponding text
-// box to state its coordinates
-function pointClicked() {
-  this.classList.toggle("border");
-
-  let xPos = (this.getAttribute("cx") / SCALE);
-  let yPos = 10 - (this.getAttribute("cy") / SCALE);
-
-  let clickedPointInfo = "Last point clicked: (" + xPos + ", " + yPos + ")";
-
-  document.getElementById("clickedPointInfo").innerHTML = clickedPointInfo;
-}
-
 // when the submit button is clicked, plot the new point
 function submitClicked() {
   let x = Number(document.getElementById("xInput").value);
@@ -96,14 +90,23 @@ function submitClicked() {
     .attr("r", 10)
     .attr("class", "point")
     .on("click", function (data) {
-      const circle = d3.select(this)
-      const display = document.getElementById('clickedPointInfo')
+      const target = d3.select(this)
       const xPos = (parseInt(this.getAttribute('cx')) - PADDING) / SCALE;
-      const yPos = (FRAME_HEIGHT - parseInt(this.getAttribute('cy'))) / SCALE;
+      const yPos = ((FRAME_HEIGHT - parseInt(this.getAttribute('cy'))) / SCALE) - 1;
 
       let clickedPointInfo = "Last point clicked: (" + xPos + ", " + yPos + ")";
 
       document.getElementById("clickedPointInfo").innerHTML = clickedPointInfo;
+
+      const stroke = target.attr("stroke");
+
+      if (stroke === null || stroke === "none") {
+        target.attr("stroke", "orange");
+        target.attr("stroke-width", "5px");
+      } else {
+        target.attr("stroke", "none")
+      }
+
 
     })
 }
