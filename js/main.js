@@ -202,7 +202,7 @@ function build_interactive_plot() {
 
     function handleMousemove(event, d) {
       // position the tooltip and fill in information 
-      TOOLTIP.html("Value: " + d.amount)
+      TOOLTIP.html("Category: " + d.category + "<br>" + "Value: " + d.amount )
         .style("left", (event.pageX + 10) + "px") //add offset
         // from mouse
         .style("top", (event.pageY - 50) + "px");
