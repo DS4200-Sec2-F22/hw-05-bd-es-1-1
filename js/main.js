@@ -124,15 +124,10 @@ const FRAME2 = d3.select("#column1")
   .attr("class", "frame");
 
 function build_interactive_plot() {
-
-
-
   // access the data for the bar graph
   d3.csv("data/bar-data.csv").then((data) => {
-    console.log(data)
 
     // add bars for each data entry
-
 
     // categorical
     const X_SCALE = d3.scaleBand()
@@ -158,7 +153,7 @@ function build_interactive_plot() {
         "," + MARGINS.top + ")")
       .call(d3.axisLeft(Y_SCALE));
 
-    FRAME2.selectAll("bars")
+    FRAME2.selectAll("bar")
       .data(data)
       .enter()
       .append("rect")
@@ -185,11 +180,16 @@ function build_interactive_plot() {
     // To add a tooltip, we will need a blank div that we 
     //  fill in with the appropriate text. Be use to note the
     //  styling we set here and in the .css
-    const TOOLTIP = d3.select("#colu")
+    const TOOLTIP = d3.select("#column1")
       .append("div")
       .attr("class", "tooltip")
       .style("opacity", 0); 
 
+
+    FRAME2.selectAll(".bar")
+      .on("mouseover", handleMouseover) //add event listeners
+      .on("mousemove", handleMousemove)
+      .on("mouseleave", handleMouseleave);   
 
 
     //  event listner for all three functions
@@ -202,7 +202,7 @@ function build_interactive_plot() {
 
     function handleMousemove(event, d) {
       // position the tooltip and fill in information 
-      TOOLTIP.html("Name: " + d.name + "<br>Value: " + d.x)
+      TOOLTIP.html("Value: " + d.amount)
         .style("left", (event.pageX + 10) + "px") //add offset
         // from mouse
         .style("top", (event.pageY - 50) + "px");
@@ -214,11 +214,7 @@ function build_interactive_plot() {
     }
 
     // Add event listeners
-    FRAME2.selectAll("bar")
-      .on("mouseover", handleMouseover) //add event listeners
-      .on("mousemove", handleMousemove)
-      .on("mouseleave", handleMouseleave);   
-
+ 
   });
 }
 
